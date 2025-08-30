@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api/axios'
+import { toast, ToastContainer } from 'react-toastify';
+//import toast from 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Universities() {
   const [rows, setRows] = useState([])
@@ -64,9 +67,10 @@ export default function Universities() {
   const bookmark = async (id) => {
     try {
       await api.post('/bookmarks', { itemType: 'UNIVERSITY', itemId: id })
-      alert('Bookmarked!')
+      toast('Bookmarked', { autoClose: 3000 }); // 3 seconds
+      //alert('Bookmarked!')
     } catch (error) {
-      alert('Bookmarked!')
+      toast('Bookmarked', { autoClose: 3000 });
     }
   }
 
